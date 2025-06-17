@@ -1,0 +1,231 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Navbar (unchanged) */
+  .navbar-wrapper {
+    max-width: 1920px;
+    width: 100%;
+    height: 124px;
+    padding: 16px 8px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    background: white;
+    border: none;
+    position: relative;
+    top: 0;
+  }
+  
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 60px;
+  }
+  
+  .logo img {
+    height: 30px;
+  }
+  
+  .logo span {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+  
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #888;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  
+  .nav-links a:hover {
+    color: #000;
+  }
+  
+  .badge {
+    background: #3f52ff;
+    color: white;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-left: 5px;
+    animation: flicker 1s infinite;
+  }
+  
+  .auth-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-right: 60px;
+  }
+  
+  .signin {
+    color: #888;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    padding: 5px;
+  }
+  
+  .signup {
+    background-color: #3f52ff;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+  }
+  
+  .menu-icon {
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .dot-icon {
+    display: grid;
+    grid-template-columns: repeat(2, 4px);
+    grid-template-rows: repeat(3, 4px);
+    gap: 2px;
+    width: max-content;
+    padding: 3px;
+  }
+  
+  .dot-icon span {
+    width: 4px;
+    height: 4px;
+    background-color: #1a1a1a;
+    border-radius: 50%;
+    display: block;
+  }
+  
+  @keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  
+  /* Main content below navbar */
+  .main-content {
+    padding-top: 124px; /* aligns below navbar */
+  }
+  
+  /* Hero/Intro section */
+  .intro-section {
+    background-color: #f5faff;
+    padding: 60px 20px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .intro-section .container {
+    max-width: 1200px;
+    margin: auto;
+    text-align: left;
+  }
+  
+  .intro-section h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 16px;
+  }
+  
+  .intro-section p {
+    font-size: 1rem;
+    max-width: 500px;
+    line-height: 1.6;
+    color: #444;
+  }
+  
+  /* Section below intro */
+  .highlight-section {
+    padding: 50px 20px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .highlight-section .container {
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .highlight-section h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  
+  .highlight-section p {
+    font-size: 1rem;
+    color: #444;
+    max-width: 800px;
+  }
+  
+  .light-green {
+    background-color: #e6f9e9;
+  }
+  
+  .purple {
+    background-color: #f1edff;
+  }
+  
+  .section {
+    padding: 40px 20px;
+    background: #ffffff;
+  }
+  
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .card {
+    background: #fff;
+    padding: 20px;
+    width: 300px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  }
+  
+  .card h3 {
+    margin-top: 10px;
+    font-size: 1.05rem;
+  }
+  
+  .card p {
+    font-size: 0.9rem;
+    margin-top: 5px;
+    color: #444;
+  }
+  
+  .icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+  }
+  
+  .pink { background-color: #fddede; }
+  .purple { background-color: #ddd5ff; }
+  .green-icon { background-color: #ddf6d9; }
+  .lightblue { background-color: #e0e4ff; }
