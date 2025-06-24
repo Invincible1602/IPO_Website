@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Settings - Trading App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-circle"></i>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-item active">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-item sub-item active">
+                        <span>Account</span>
+                    </div>
+                    <div class="nav-item sub-item">
+                        <span>Notifications & Messages</span>
+                    </div>
+                    <div class="nav-item sub-item">
+                        <span>Security & Privacy</span>
+                    </div>
+                    <div class="nav-item sub-item">
+                        <span>Appearance</span>
+                    </div>
+                    <div class="nav-item sub-item">
+                        <span>Chart Settings</span>
+                    </div>
+                    <div class="nav-item sub-item">
+                        <span>Navigation Settings</span>
+                    </div>
+                    <div class="nav-item sub-item">
+                        <span>Quotes Preferences</span>
+                    </div>
+                    <div class="nav-item sub-item">
+                        <span>Documents</span>
+                    </div>
+                    <div class="nav-item sub-item">
+                        <span>Community Settings</span>
+                    </div>
+                    <div class="nav-item sub-item">
+                        <span>History</span>
+                    </div>
+                    <div class="nav-item sub-item">
+                        <span>Beneficiaries</span>
+                    </div>
+                    <div class="nav-item sub-item">
+                        <span>Rewards</span>
+                    </div>
+                </div>
+            </nav>
+            
+            <div class="sidebar-bottom">
+                <div class="nav-item">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-folder"></i>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-cog"></i>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Account%20Settings-EeyJz7o69yYlgrQyZniAhYdKRXxTJ6.png" alt="User Avatar">
+                    </div>
+                    <div class="user-details">
+                        <div class="user-name">James Raymond</div>
+                        <div class="account-number">Account: 4453728992</div>
+                    </div>
+                    <div class="balance-info">
+                        <div class="balance-item">
+                            <div class="balance-label">Portfolio Balance</div>
+                            <div class="balance-value">$623,098.17</div>
+                        </div>
+                        <div class="balance-item">
+                            <div class="balance-label">Available Funds</div>
+                            <div class="balance-value">$122,912.50</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search" class="search-input">
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <h1 class="page-title">Account Settings</h1>
+                <p class="page-description">View and manage account details such as name, email address, contact information, etc.</p>
+
+                <!-- Account Profile Section -->
+                <div class="settings-section">
+                    <div class="account-profile">
+                        <div class="profile-image">
+                            <img src="/placeholder.svg?height=80&width=80" alt="Profile Picture">
+                        </div>
+                        <div class="profile-info">
+                            <div class="profile-label">Account Number</div>
+                            <div class="profile-value">4453728992</div>
+                        </div>
+                        <button class="deactivate-btn">Deactivate Account</button>
+                    </div>
+                </div>
+
+                <!-- Personal Information Section -->
+                <div class="settings-section">
+                    <div class="section-header">
+                        <h2>Personal Information</h2>
+                        <button class="edit-btn" onclick="toggleEdit('personal')">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                    </div>
+                    <div class="info-grid" id="personal-info">
+                        <div class="info-item">
+                            <label>First Name</label>
+                            <div class="info-value">Pratik</div>
+                        </div>
+                        <div class="info-item">
+                            <label>Last Name</label>
+                            <div class="info-value">Patil</div>
+                        </div>
+                        <div class="info-item">
+                            <label>Date of Birth</label>
+                            <div class="info-value">December 17, 1990</div>
+                        </div>
+                        <div class="info-item">
+                            <label>Email Address</label>
+                            <div class="info-value">pratikpatil@hotmail.com</div>
+                        </div>
+                        <div class="info-item">
+                            <label>Phone Number</label>
+                            <div class="info-value">(123) 456-7890</div>
+                        </div>
+                        <div class="info-item">
+                            <label>Username</label>
+                            <div class="info-value">Wilttradeberlain</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Address Section -->
+                <div class="settings-section">
+                    <div class="section-header">
+                        <h2>Address</h2>
+                        <button class="edit-btn" onclick="toggleEdit('address')">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                    </div>
+                    <div class="info-grid" id="address-info">
+                        <div class="info-item">
+                            <label>Country</label>
+                            <div class="info-value">India</div>
+                        </div>
+                        <div class="info-item">
+                            <label>City/State</label>
+                            <div class="info-value">Pune, MH</div>
+                        </div>
+                        <div class="info-item">
+                            <label>Street Address</label>
+                            <div class="info-value">4517 Kothrud</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Employer Section -->
+                <div class="settings-section">
+                    <div class="section-header">
+                        <h2>Employer</h2>
+                        <button class="edit-btn" onclick="toggleEdit('employer')">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                    </div>
+                    <div class="info-grid" id="employer-info">
+                        <div class="info-item">
+                            <label>Company Name</label>
+                            <div class="info-value">Designer Inc.</div>
+                        </div>
+                        <div class="info-item">
+                            <label>City/State</label>
+                            <div class="info-value">Chicago, Illinois</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
