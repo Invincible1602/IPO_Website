@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigate the Markets with Confidence</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #1a1a1a;
+            --text-color: white;
+            --form-bg: #2a2a2a;
+            --form-border: #333;
+            --accent-color: #06b6d4;
+            --secondary-accent: #0891b2;
+            --divider-color: #666;
+            --label-color: #ccc;
+        }
+
+        [data-theme="light"] {
+            --bg-color: #f5f5f5;
+            --text-color: #1a1a1a;
+            --form-bg: #ffffff;
+            --form-border: #ccc;
+            --accent-color: #06b6d4;
+            --secondary-accent: #0891b2;
+            --divider-color: #999;
+            --label-color: #666;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        .left-section {
+            flex: 1;
+            background: linear-gradient(135deg, #1e40af 0%, #0891b2 50%, #06b6d4 100%);
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .left-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0,0,0,0.3) 0%, transparent 100%);
+            transform: skewX(-15deg);
+            transform-origin: top right;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 40px;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .feature-pill {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            padding: 12px 24px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial {
+            margin-top: auto;
+        }
+
+        .quote {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .quote-highlight {
+            font-weight: 600;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #ccc;
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .author-info .pro-badge {
+            color: #fbbf24;
+            font-size: 0.85rem;
+        }
+
+        .right-section {
+            flex: 1;
+            padding: 40px 60px;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-color);
+        }
+
+        .dark-mode-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-bottom: 40px;
+            gap: 10px;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 24px;
+            background: var(--accent-color);
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .toggle-switch.active::after {
+            transform: translateX(26px);
+        }
+
+        .signup-form {
+            max-width: 400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: 1px solid var(--form-border);
+            border-radius: 8px;
+            background: var(--form-bg);
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .social-btn img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .social-btn:hover {
+            background: var(--form-border);
+        }
+
+        .divider {
+            text-align: center;
+            margin: 20px 0;
+            color: var(--divider-color);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            flex: 1;
+        }
+
+        .form-group.full-width {
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--label-color);
+            font-size: 0.9rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--form-border);
+            border-radius: 8px;
+            background: var(--form-bg);
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .password-requirements {
+            font-size: 0.8rem;
+            color: var(--divider-color);
+            margin-top: 5px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+        }
+
+        .create-account-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .create-account-btn:hover {
+            background: var(--secondary-accent);
+        }
+
+        .terms-text {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--divider-color);
+            margin-top: 15px;
+        }
+
+        .terms-link {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .password-field {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--divider-color);
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .left-section {
+                padding: 40px 30px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .right-section {
+                padding: 30px;
+            }
+            
+            .social-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <div class="container">
+        <div class="left-section">
+            <div class="hero-content">
+                <h1>Navigate the Markets with Confidence</h1>
+                <div class="features">
+                    <div class="feature-pill">Advanced Technical Analysis/Charting Tools</div>
+                    <div class="feature-pill">Community Feeds</div>
+                    <div class="feature-pill">Customizable UI for Your Trading Style</div>
+                    <div class="feature-pill">Customer Support</div>
+                </div>
+            </div>
+            
+            <div class="testimonial">
+                <div class="quote">
+                    Game changing trading software that helped me <span class="quote-highlight">analysis market trends</span> easily and <span class="quote-highlight">make better decisions</span>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar"></div>
+                    <div class="author-info">
+                        <h4>Aaron O'Donnell</h4>
+                        <div class="pro-badge">Pro Account</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-section">
+            <div class="dark-mode-toggle">
+                <span id="toggleText">🌙 Dark Mode</span>
+                <div class="toggle-switch" id="darkModeToggle"></div>
+            </div>
+
+            <div class="signup-form">
+                <div class="social-buttons">
+                    <button class="social-btn">
+                        <img src="https://yt3.googleusercontent.com/2eI1TjX447QZFDe6R32K0V2mjbVMKT5mIfQR-wK5bAsxttS_7qzUDS1ojoSKeSP0NuWd6sl7qQ=s900-c-k-c0x00ffffff-no-rj" alt="Google">
+                        Sign up with Google
+                    </button>
+                    <button class="social-btn">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiXN9xSEe8unzPBEQOeAKXd9Q55efGHGB9BA&s" alt="Facebook">
+                        Sign up with Facebook
+                    </button>
+                </div>
+
+                <div class="divider">or</div>
+
+                <form id="signupForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName" value="Jam" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="password">Password</label>
+                        <div class="password-field">
+                            <input type="password" id="password" name="password" required>
+                            <button type="button" class="password-toggle" onclick="togglePassword()">👁</button>
+                        </div>
+                        <div class="password-requirements">
+                            At least 8 characters, with numbers and symbols.
+                        </div>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Remember this device</label>
+                    </div>
+
+                    <button type="submit" class="create-account-btn">Create Account</button>
+
+                    <div class="terms-text">
+                        By logging in, you agree to follow our <a href="#" class="terms-link">terms of service</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dark mode toggle functionality
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const toggleText = document.getElementById('toggleText');
+        
+        // Check local storage for theme preference
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.body.setAttribute('data-theme', savedTheme);
+        updateToggleState(savedTheme);
+
+        darkModeToggle.addEventListener('click', function() {
+            const currentTheme = document.body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateToggleState(newTheme);
+        });
+
+        function updateToggleState(theme) {
+            if (theme === 'light') {
+                darkModeToggle.classList.add('active');
+                toggleText.textContent = '☀️ Light Mode';
+            } else {
+                darkModeToggle.classList.remove('active');
+                toggleText.textContent = '🌙 Dark Mode';
+            }
+        }
+
+        // Password visibility toggle
+        function togglePassword() {
+            const passwordField = document.getElementById('password');
+            const toggleBtn = document.querySelector('.password-toggle');
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggleBtn.textContent = '🙈';
+            } else {
+                passwordField.type = 'password';
+                toggleBtn.textContent = '👁';
+            }
+        }
+
+        // Form submission
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Basic validation
+            if (data.password.length < 8) {
+                alert('Password must be at least 8 characters long');
+                return;
+            }
+            
+            // Simulate account creation
+            alert('Account created successfully!');
+            console.log('Form data:', data);
+        });
+
+        // Social login buttons
+        document.querySelectorAll('.social-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const provider = this.textContent.includes('Google') ? 'Google' : 'Facebook';
+                alert(`Redirecting to ${provider} login...`);
+            });
+        });
+    </script>
+</body>
+</html>
