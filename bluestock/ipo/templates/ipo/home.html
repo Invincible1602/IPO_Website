@@ -1,0 +1,254 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IPO - Bluestock</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .navbar-wrapper {
+      max-width: 1920px;
+      width: 100%;
+      height: 124px;
+      padding: 16px 8px;
+      box-sizing: border-box;
+      margin: 0 auto;
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-left: 60px;
+    }
+
+    .logo img {
+      height: 30px;
+    }
+
+    .logo span {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #888;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: #000;
+    }
+
+    .badge {
+      background: #3f52ff;
+      color: white;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-left: 5px;
+      animation: flicker 1s infinite;
+    }
+
+    .auth-section {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding-right: 60px;
+    }
+
+    .signin {
+      color: #888;
+      text-decoration: none;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      padding: 5px;
+    }
+
+    .signup {
+      background-color: #3f52ff;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+    }
+
+    .dot-icon {
+      display: grid;
+      grid-template-columns: repeat(2, 4px);
+      grid-template-rows: repeat(3, 4px);
+      gap: 2px;
+      width: max-content;
+      padding: 3px;
+    }
+
+    .dot-icon span {
+      width: 4px;
+      height: 4px;
+      background-color: #1a1a1a;
+      border-radius: 50%;
+      display: block;
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .faq-answer { display: none; }
+    .faq-answer.show { display: block; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar (Custom CSS) -->
+  <div class="navbar-wrapper">
+    <div class="navbar">
+      <div class="logo">
+        <img src="/static/ipo/images/logo.png" alt="Bluestock Logo">
+       </div>
+
+      <div class="nav-links">
+        <a href="#">IPO</a>
+        <a href="#">COMMUNITY</a>
+        <a href="#">PRODUCTS ▾</a>
+        <a href="#">BROKERS ↗</a>
+        <a href="#">LIVE NEWS <span class="badge">NEW</span></a>
+      </div>
+
+      <div class="auth-section">
+        <a href="#" class="signin">Sign In</a>
+        <button class="signup">Sign Up Now</button>
+        <div class="dot-icon">
+          <span></span><span></span>
+          <span></span><span></span>
+          <span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Upcoming IPOs -->
+  <section class="text-center mt-10">
+    <h2 class="text-2xl font-bold mb-4">Upcoming IPOs</h2>
+    <div class="flex justify-center flex-wrap gap-4">
+      {% for ipo in upcoming_ipos %}
+      <div class="bg-white p-4 rounded shadow w-72">
+        <h3 class="font-semibold text-blue-600 mb-2">{{ ipo.company_name }}</h3>
+        <p>Price Band: {{ ipo.price_band }}</p>
+        <p>Open: {{ ipo.open_date }}</p>
+        <p>Close: {{ ipo.close_date }}</p>
+        <p>Listing Date: {{ ipo.listing_date }}</p>
+        <p>Issue Size: {{ ipo.issue_size }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Ongoing IPOs -->
+  <section class="px-6 my-10">
+    <h2 class="text-xl font-bold mb-4">Ongoing IPOs</h2>
+    <div class="flex justify-start flex-wrap gap-4">
+      {% for ipo in ongoing_ipos %}
+      <div class="bg-white p-4 rounded shadow w-72">
+        <h3 class="font-semibold text-blue-600 mb-2">{{ ipo.company_name }}</h3>
+        <p>Price Band: {{ ipo.price_band }}</p>
+        <p>Open: {{ ipo.open_date }}</p>
+        <p>Close: {{ ipo.close_date }}</p>
+        <p>Listing Date: {{ ipo.listing_date }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Listed IPOs -->
+  <section class="text-center mb-10">
+    <h2 class="text-2xl font-bold mb-4">Newly Listed IPOs</h2>
+    <div class="flex justify-center flex-wrap gap-4">
+      {% for ipo in listed_ipos %}
+      <div class="bg-white p-4 rounded shadow w-72">
+        <h3 class="font-semibold text-blue-600">{{ ipo.company_name }}</h3>
+        <p>Listing Date: {{ ipo.listing_date }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+
+
+  <script src="{% static 'scripts/scripts.js' %}"></script>
+  <!-- Bluestock CTA -->
+  <section class="bg-white text-center py-8 border-t">
+    <img src="/static/ipo/images/logo.png" alt="Bluestock Logo" class="mx-auto h-10">
+    <h3 class="text-xl font-semibold mt-4 mb-2">Applying for this IPO?</h3>
+    <p class="text-sm text-gray-600 mb-4 max-w-xl mx-auto">Bluestock is your gateway to reliable and timely IPO access. We help you stay updated with every new listing and assist in the IPO investment journey seamlessly.</p>
+    <button class="bg-blue-600 text-white px-6 py-2 rounded">View Full IPO Calendar</button>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="max-w-3xl mx-auto px-6 py-12">
+    <h2 class="text-xl font-bold mb-6">Frequently Asked Questions</h2>
+    <div class="space-y-4">
+      <div class="faq-item">
+        <button class="w-full text-left font-medium bg-gray-100 px-4 py-3 rounded toggle-btn">What is an IPO?</button>
+        <div class="faq-answer bg-white px-4 py-3 border-l-4 border-blue-600">IPO (Initial Public Offering) is the first time a company issues shares to the public in order to raise funds.</div>
+      </div>
+      <div class="faq-item">
+        <button class="w-full text-left font-medium bg-gray-100 px-4 py-3 rounded toggle-btn">How to invest in an IPO?</button>
+        <div class="faq-answer bg-white px-4 py-3 border-l-4 border-blue-600">You can apply for IPOs through your broker or via an online ASBA-enabled bank account.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white text-center text-sm py-6 text-gray-500">
+    © 2025 Bluestock IPO Portal
+  </footer>
+
+  <script>
+    document.querySelectorAll('.toggle-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const answer = button.nextElementSibling;
+        answer.classList.toggle('show');
+      });
+    });
+  </script>
+
+
+</body>
+</html>
